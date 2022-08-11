@@ -1,38 +1,74 @@
 <template>
-  <div className="tweet">
-    <img
-      src="https://i.imgur.com/9yw1Fyw.jpg"
-      className="profile"
-      alt="profile"
-    />
+  <div className="tweet"> 
+    <ProfileImage  :image="user.image"/>
 
     <div className="body">
       <div className="top">
-        <span className="user">
-          <span className="name">Ironhack</span>
-          <span className="handle">@ironhack</span>
-        </span>
-
-        <span className="timestamp">Nov 30, 2020</span>
+        
+        <User :userData="user" />
+        <Timestamp :timestamp="timestamp"/>
       </div>
 
-      <p className="message">
-        On December 7th, we will be hosting a #webinar that will introduce you
-        to #SQL! Are you ready? 🚀
-      </p>
+      <message :message="message" />
 
-      <div className="actions">
-        <!-- Font Awesome icons -->
-        <i class="far fa-comment"></i>
-        <i class="fas fa-retweet"></i>
-        <i class="far fa-heart"></i>
-        <i class="fas fa-share"></i>
-      </div>
+      <Actions />
     </div>
 
     <i class="fas fa-ellipsis-h"></i>
   </div>
 </template>
+<script>
+import Actions from './Actions.vue'
+import Message from './Message.vue'
+import Timestamp from './Timestamp.vue'
+import ProfileImage from './ProfileImage.vue'
+import User from './User.vue'
+
+export default {
+  name:'Tweet',
+    data (){
+        return{}
+    },
+    methods:{},
+    props:{
+      timestamp:String,
+      message:String,
+      user:Object,
+    },
+    components:{
+        Actions,
+        Message,
+        ProfileImage,
+        Timestamp,
+        User
+    }
+      // dataTweets:{
+      //   name:{
+      //     type:String,
+      //     required:true,
+      //   },
+      //   image:{
+      //     link:{
+      //       type:String,
+      //       default:'../assets/logo.png'
+      //     },
+      //     handle:{
+      //       type:String,
+      //       required:true
+      //     },
+      //     timeStamp:{
+      //       type:String,
+      //     },
+      //     message:{
+      //       type:String,
+      //     }
+      //   }
+      // }
+   
+}
+
+
+</script>
 
 <style scoped>
 a {
